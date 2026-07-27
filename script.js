@@ -44,28 +44,33 @@ document.querySelector(
 const letterData = {
 
 
-    title: "Surat Wowo",
+    title: "Please Read This",
 
 
     content: `
 
         <p>
-            Hidup kopdes
+            Dear Repasta
         </p>
 
 
         <p>
-            Hidup MBG
+        MWEHEHHEEHEHHEHEHHHEHEHEHE
         </p>
-
-
         <p>
-            Hidup Teddy
+        MWEHEHHEEHEHHEHEHHHEHEHEHE
         </p>
-
-
         <p>
-            Hidup Jokowi
+        MWEHEHHEEHEHHEHEHHHEHEHEHE
+        </p>
+        <p>
+        MWEHEHHEEHEHHEHEHHHEHEHEHE
+        </p>
+        <p>
+        MWEHEHHEEHEHHEHEHHHEHEHEHE
+        </p>
+        <p>
+        MWEHEHHEEHEHHEHEHHHEHEHEHE
         </p>
 
     `
