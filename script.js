@@ -6,6 +6,7 @@
 const music =
 document.querySelector("#music");
 
+console.log("JS berhasil dimuat");
 
 const memory =
 document.querySelector(".memory");
