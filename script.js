@@ -6,7 +6,6 @@
 const music =
 document.querySelector("#music");
 
-console.log("JS berhasil dimuat");
 
 const memory =
 document.querySelector(".memory");
@@ -51,7 +50,7 @@ const letterData = {
     content: `
 
         <p>
-            Dear Repasta
+            MWHEHWEHHEHWHEHEHHEHHEHHEHHEH
         </p>
 
 
@@ -88,15 +87,18 @@ const letterData = {
 
 const flowers = [
 
-    "foto/1.jpg",
-
-    "foto/2.jpg",
-
-    "foto/3.jpg ",
-
-    "foto/4.jpg",
-
-    "foto/5.jpg",
+    "foto/1.png",
+    "foto/2.png",
+    "foto/3.png",
+    "foto/4.png",
+    "foto/5.png",
+    "foto/6.png",
+    "foto/7.png",
+    "foto/8.png",
+    "foto/9.png",
+    "foto/10.png",
+    "foto/11.png",
+    "foto/12.png",
 
 ];
 
@@ -159,13 +161,14 @@ ribbon.addEventListener(
 // KLIK KERTAS
 // =========================
 
-
 paper.addEventListener(
     "click",
     () => {
 
 
-        // kertas fullscreen
+        // =========================
+        // KERTAS FULL
+        // =========================
 
         container.classList.add(
             "show-paper"
@@ -173,13 +176,17 @@ paper.addEventListener(
 
 
 
-        // musik mulai
+        // =========================
+        // MUSIC
+        // =========================
 
         music.play();
 
 
 
-        // tunggu animasi kertas
+        // =========================
+        // TUNGGU PAPER TERBUKA
+        // =========================
 
         setTimeout(
             () => {
@@ -188,23 +195,45 @@ paper.addEventListener(
                 showFlowers();
 
 
+
+                // =========================
+                // STOP BUNGA MUNCUL
+                // =========================
+
+                setTimeout(
+                    () => {
+
+
+                        clearInterval(
+                            flowerTimer
+                        );
+
+
+                    },
+                    3000
+                );
+
+
+
+                // =========================
+                // HILANGKAN BUNGA
+                // =========================
+
+                setTimeout(
+                    () => {
+
+
+                        hideFlowers();
+
+
+                    },
+                    6000
+                );
+
+
+
             },
             1000
-        );
-
-
-
-        // bunga hilang setelah 7 detik
-
-        setTimeout(
-            () => {
-
-
-                hideFlowers();
-
-
-            },
-            8000
         );
 
 
@@ -216,12 +245,12 @@ paper.addEventListener(
 
 
 
+
 // =========================
-// TAMPILKAN BUNGA
+// BUNGA MUNCUL DARI TENGAH
 // =========================
 
-
-function showFlowers(){
+function showFlowers() {
 
 
     memory.classList.add(
@@ -229,11 +258,9 @@ function showFlowers(){
     );
 
 
-
     flowerTimer =
     setInterval(
         () => {
-
 
 
             const img =
@@ -243,7 +270,9 @@ function showFlowers(){
 
 
 
-            // pilih bunga random
+            // =========================
+            // FOTO RANDOM
+            // =========================
 
             img.src =
             flowers[
@@ -256,14 +285,16 @@ function showFlowers(){
 
 
 
-            // ukuran random
+            // =========================
+            // UKURAN BUNGA
+            // =========================
 
             const size =
             Math.floor(
                 Math.random()
                 *
-                250
-            ) + 80;
+                400
+            ) + 70;
 
 
 
@@ -272,34 +303,30 @@ function showFlowers(){
 
 
 
-            // posisi random layar
+            // =========================
+            // TITIK AWAL
+            // SEMUA DARI TENGAH
+            // =========================
 
             img.style.left =
-            Math.random()
-            *
-            90
-            +
-            "vw";
-
+            "50%";
 
 
             img.style.top =
-            Math.random()
-            *
-            90
-            +
-            "vh";
+            "50%";
 
 
 
-            // rotasi random
+            img.style.opacity =
+            "0";
 
-            img.style.rotate =
-            Math.random()
-            *
-            360
-            +
-            "deg";
+
+
+            img.style.transform =
+            `
+            translate(-50%, -50%)
+            scale(0)
+            `;
 
 
 
@@ -309,58 +336,196 @@ function showFlowers(){
 
 
 
-            // hapus foto lama
+            // =========================
+            // ARAH BUNGA
+            // =========================
 
-            setTimeout(
+            const angle =
+            Math.random()
+            *
+            Math.PI
+            *
+            2;
+
+
+
+            let distance;
+
+
+
+            // =========================
+            // 80% MENUTUP PAPER
+            // 20% MENYEBAR JAUH
+            // =========================
+
+            if(
+                Math.random() < 0.8
+            ){
+
+
+                distance =
+                Math.random()
+                *
+                180
+                +
+                40;
+
+
+            }else{
+
+
+                distance =
+                Math.random()
+                *
+                400
+                +
+                200;
+
+
+            }
+
+            
+
+
+
+            const x =
+            Math.cos(angle)
+            *
+            distance;
+
+
+
+            const y =
+            Math.sin(angle)
+            *
+            distance;
+
+
+
+            // =========================
+            // ANIMASI KELUAR
+            // =========================
+
+            requestAnimationFrame(
                 () => {
 
-                    img.remove();
 
-                },
-                4000
+                    img.style.transition =
+                    "0.8s ease";
+
+
+
+                    img.style.opacity =
+                    "1";
+
+
+
+                    img.style.transform =
+                    `
+                    translate(
+                    calc(-50% + ${x}px),
+                    calc(-50% + ${y}px)
+                    )
+                    scale(1)
+                    `;
+
+
+                }
             );
 
 
 
         },
-        300
+
+
+        // jumlah bunga muncul
+        60
+
     );
+
 
 }
-
-
-
-
-
-
 // =========================
 // HILANGKAN BUNGA
+// MENGECIL + FADE OUT
 // =========================
 
+function hideFlowers() {
 
-function hideFlowers(){
 
-
-    clearInterval(
-        flowerTimer
+    const allFlowers =
+    document.querySelectorAll(
+        ".memory img"
     );
 
 
 
-    memory.classList.remove(
-        "show"
+    allFlowers.forEach(
+        (img, index) => {
+
+
+            setTimeout(
+                () => {
+
+
+                    // animasi mengecil + transparan
+
+                    img.style.transition =
+                    "0.8s ease";
+
+
+                    img.style.opacity =
+                    "0";
+
+
+                    img.style.transform +=
+                    " scale(0)";
+
+
+
+                    // hapus setelah animasi selesai
+
+                    setTimeout(
+                        () => {
+
+                            img.remove();
+
+                        },
+                        800
+                    );
+
+
+                },
+
+
+                // jeda antar bunga hilang
+
+                index * 80
+
+            );
+
+
+        }
     );
 
 
+
+    // hilangkan background memory
 
     setTimeout(
         () => {
 
-            memory.innerHTML =
-            "";
+
+            memory.classList.remove(
+                "show"
+            );
+
 
         },
-        800
+
+        allFlowers.length * 80 + 1000
+
     );
+
 
 }
