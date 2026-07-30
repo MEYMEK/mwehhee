@@ -99,6 +99,7 @@ const letterData = {
         tetapi juga dalam diamnya pagi, hangatnya percakapan,
         dan setiap momen kecil yang mengingatkan bahwa hidup adalah anugerah yang patut dihargai.
     </p>
+    <p>tetaplah hidup untuk hal-hal kecil yang kamu sukai.</P>
     
     `
 };
