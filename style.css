@@ -1,0 +1,676 @@
+/* =========================
+   RESET
+========================= */
+
+* {
+    box-sizing: border-box;
+}
+
+
+body {
+
+    margin: 0;
+
+    width: 100vw;
+    height: 100vh;
+
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+
+    background: #202020;
+
+
+    font-family:
+        "Segoe UI",
+        Arial,
+        sans-serif;
+
+}
+
+
+
+/* =========================
+   CONTAINER
+========================= */
+
+
+.container {
+
+    position: relative;
+
+    width: 400px;
+    height: 350px;
+
+}
+
+
+
+
+
+/* =========================
+   AMPLOP
+========================= */
+
+
+.envelope {
+
+    position: absolute;
+
+    width: 280px;
+    height: 170px;
+
+
+    top:25%;
+    left:15%;
+
+}
+
+
+
+
+
+/* =========================
+   BELAKANG AMPLOP
+========================= */
+
+
+.envelope-back {
+
+
+    position:absolute;
+
+
+    width:280px;
+    height:170px;
+
+
+    background-image:url("foto/belakang.jpg");
+    background-size:cover;
+    background-position:center;
+
+
+    border-radius:12px;
+
+
+    border:
+    3px solid #8b5a2b;
+
+
+
+    box-shadow:
+
+        0 10px 25px rgba(0,0,0,.35);
+
+
+
+            z-index:1;
+
+            }
+
+
+
+
+
+            /* =========================
+               KERTAS SURAT
+               ========================= */
+
+               
+.paper {
+
+
+    position:absolute;
+
+
+    width:260px;
+    height: 250px;
+
+
+    left:70px;
+    top:0px;
+
+    overflow:hidden;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+
+
+    background-image:url("foto/kerta.jpg");
+    background-size:cover;
+    background-position:center;
+
+
+    border-radius:10px;
+
+
+    padding:15px;
+
+
+
+    box-shadow:
+
+    0 15px 40px rgba(0,0,0,.35);
+
+
+
+    z-index:2;
+
+
+
+    opacity:0;
+
+
+
+    transform:
+
+    translateY(0)
+
+    scale(.9);
+
+
+
+    transition:.8s ease;
+
+}
+
+
+
+
+.letter-header h1 {
+
+
+    margin:0;
+
+
+    text-align:center;
+
+    font-family: "Edu VIC WA NT Hand", cursive;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+
+    font-size: 1.5rem;
+
+}
+
+
+
+
+.letter-content {
+
+
+    padding-left:30px;
+    padding-right:0px;
+
+    font-family: "Edu VIC WA NT Hand", cursive;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+
+    font-size: 0.9rem;
+
+
+    line-height:1.5rem;
+
+}
+
+
+
+
+
+
+
+/* =========================
+   DEPAN AMPLOP
+========================= */
+
+
+.envelope-front {
+
+
+    position:absolute;
+
+
+    width:280px;
+    height:170px;
+
+
+    background-image:url("foto/depan.jpg");
+    background-size:cover;
+    background-position:center;
+
+
+    border-radius:12px;
+
+
+
+
+
+
+    z-index:3;
+
+}
+
+
+
+
+
+
+
+/* =========================
+   TUTUP AMPLOP
+========================= */
+
+
+.envelope-flap {
+
+
+    position:absolute;
+
+
+    width:280px;
+    height:90px;
+
+
+    left:0;
+    top:0;
+
+    border-radius:12px;
+
+    background-image:url("foto/Intersect.jpg");
+    background-size:cover;
+    
+
+    clip-path:polygon(
+    0 0,
+    50% 100%,
+    100% 0
+    );
+
+    transform-origin:top;
+
+
+
+    transition:.8s ease;
+
+
+
+    z-index:4;
+
+}
+
+
+
+
+
+
+
+/* =========================
+   PITA
+========================= */
+
+
+.ribbon {
+
+    position: absolute;
+
+    left: 35%;
+    top: 35%;
+
+    width: 120px;
+    height: 120px;
+
+    border: none;
+    background: transparent;
+
+    cursor: pointer;
+
+    z-index: 5;
+
+    transition: .3s;
+
+    padding: 0;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.ribbon img {
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: contain;
+
+    pointer-events: none;
+
+}
+
+
+
+
+.ribbon:hover {
+
+    transform:scale(1.15);
+
+}
+
+
+
+
+
+
+
+/* =========================
+   AMPLOP TERBUKA
+========================= */
+
+
+.container.open .paper {
+
+
+    opacity:1;
+
+
+    transform:
+
+    translateY(-20px)
+
+    scale(1);
+
+}
+
+
+
+
+.container.open .envelope-flap {
+
+
+    transform:
+
+    rotateX(180deg);
+
+
+
+    z-index:1;
+
+}
+
+
+
+
+
+
+
+/* =========================
+   KERTAS FULL
+========================= */
+
+
+.container.show-paper .paper {
+
+
+    animation:
+
+    paper-expand 1s ease forwards;
+
+}
+
+
+
+
+
+
+@keyframes paper-expand {
+
+
+    0% {
+
+
+        width:260px;
+
+        height:250px;
+
+
+        transform:
+
+        translateY(0)
+
+        scale(.9);
+
+    }
+
+
+
+    50% {
+
+
+        height:250px;
+
+
+        transform:
+
+        translateY(-170px)
+
+        scale(1);
+
+    }
+
+
+
+    100% {
+
+
+        width:350px;
+
+
+        height:600px;
+
+
+        left:25px;
+
+        top:20px;
+
+
+
+        transform:
+
+        translateY(-170px)
+
+        scale(1);
+
+    }
+
+}
+
+
+
+
+
+
+
+/* =========================
+   AMPLOP TURUN HILANG
+========================= */
+
+
+.container.show-paper .envelope {
+
+
+    animation:
+
+    envelope-hide 1s ease forwards;
+
+}
+
+
+
+
+
+@keyframes envelope-hide {
+
+
+    from {
+
+
+        opacity:1;
+
+
+        transform:
+
+        translateY(0);
+
+    }
+
+
+
+    to {
+
+
+        opacity:0;
+
+
+        transform:
+
+        translateY(250px)
+
+        scale(.8);
+
+    }
+
+}
+
+
+
+
+
+
+
+
+/* =========================
+   MEMORY FLOWER EFFECT
+========================= */
+
+
+.memory {
+
+
+    position:fixed;
+
+
+    inset:0;
+
+
+    width:100vw;
+
+    height:100vh;
+
+
+    overflow:hidden;
+
+
+
+    background:
+
+    rgba(0,0,0,.75);
+
+
+
+    opacity:0;
+
+
+    pointer-events:none;
+
+
+
+    z-index:100;
+
+
+
+    transition:
+
+    opacity .8s ease;
+
+}
+
+
+
+
+
+.memory.show {
+
+
+    opacity:1;
+
+}
+
+
+
+
+
+
+.memory img {
+
+
+    position:absolute;
+
+
+    object-fit:contain;
+
+
+
+    filter:
+
+    drop-shadow(
+
+    0 15px 30px rgba(0,0,0,.5)
+
+    );
+
+
+
+    /*
+    MATIKAN ANIMASI CSS
+    karena animasi dikontrol JS
+    */
+
+
+    animation:none;
+
+
+
+    /*
+    TRANSISI UNTUK:
+    - bunga membesar
+    - bunga mengecil
+    - fade out
+    */
+
+
+    transition:
+
+    opacity 0.3s ease,
+
+    transform 0.3s ease;
+
+}
+
+#canvas {
+
+    position: fixed;
+
+    inset:0;
+
+    width:100vw;
+    height:100vh;
+
+    pointer-events:none;
+
+    z-index:110;
+
+}
